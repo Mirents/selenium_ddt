@@ -2,7 +2,8 @@
 ### Решение задания 1
 Расположено в файле `task-1.md`.
 ### Решение задания 2
-Java проект из JUnit тестов с использованием Selenium WebDriver в браузее Google Chrome. Система сборки - Maven.
+Расположено в папке `task-2`.
+Представляет из себя Java проект из JUnit тестов с использованием Selenium WebDriver в браузее Google Chrome. Система сборки - Maven.
 В файле 'qa_test/src/test/resources/conf.properties' расположены настройки тестов:
 * "chromedriver = C:\\webdriver\\chromedriver.exe" - путь к распакованному вебдрайверу (скачать вебдрайвер для соответствующей версии браузера по [ссылке](https://chromedriver.chromium.org/downloads));
 * "maximizewindow = off" - развернуть окно на весь экран (off/on);
