@@ -3,7 +3,7 @@
 Расположено в файле `task-1.md`.
 ### Решение задания 2
 Расположено в папке `task-2`.
-Представляет из себя Java проект из JUnit тестов с использованием Selenium WebDriver в браузее Google Chrome. Система сборки - Maven.
+Представляет из себя Java проект из JUnit тестов с использованием Selenium WebDriver в браузере Google Chrome. Система сборки - Maven.
 Тесты выполняются в браузере в режиме эмуляции устройства "Nexus 5".
 В файле 'qa_test/src/test/resources/conf.properties' расположены настройки тестов:
 * "chromedriver = C:\\webdriver\\chromedriver.exe" - путь к распакованному драйверу (скачать драйвер для соответствующей версии браузера по [ссылке](https://chromedriver.chromium.org/downloads));
