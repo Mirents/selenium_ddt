@@ -6,7 +6,7 @@
 Представляет из себя Java проект из JUnit тестов с использованием Selenium WebDriver в браузее Google Chrome. Система сборки - Maven.
 Тесты выполняются в браузере в режиме эмуляции устройства "Nexus 5".
 В файле 'qa_test/src/test/resources/conf.properties' расположены настройки тестов:
-* "chromedriver = C:\\webdriver\\chromedriver.exe" - путь к распакованному вебдрайверу (скачать вебдрайвер для соответствующей версии браузера по [ссылке](https://chromedriver.chromium.org/downloads));
+* "chromedriver = C:\\webdriver\\chromedriver.exe" - путь к распакованному драйверу (скачать драйвер для соответствующей версии браузера по [ссылке](https://chromedriver.chromium.org/downloads));
 * "maximizewindow = off" - развернуть окно на весь экран (off/on);
 * "disablenotifications = on" - отключить уведомления браузера (off/on);
 * "numstationtochoise = 5" - количество станций для выбора при проведении теста (любое число в пределах количества станций сайта);
