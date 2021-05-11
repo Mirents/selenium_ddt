@@ -31,12 +31,12 @@ public class DriverManager {
         }
 
         initDriver();
-        LOGGER.info("Успешная инициализация веб-драйвера");
+        LOGGER.info("Successful initialization of the web driver");
     }
     
     public static EventFiringWebDriver getDriver() {
         if(eventDriver == null) {
-            LOGGER.info("Создание экземпляра веб-драйвера");
+            LOGGER.info("Instantiating the Web Driver");
             INSTANCE = new DriverManager();
         }
         
@@ -45,7 +45,7 @@ public class DriverManager {
 
     public static void quitDriver() {
         if(eventDriver != null) {
-            LOGGER.info("Завершение работы веб-драйвера и закрытие всех активных вкладок");
+            LOGGER.info("Shutting down the web driver");
             eventDriver.quit();
             eventDriver = null;
             INSTANCE = null;
@@ -54,17 +54,16 @@ public class DriverManager {
     
     private void initDriver() {
         if (OS.isFamilyWindows()) {
-            LOGGER.info("Инициализация веб-драйвера для ОС Windows");
+            LOGGER.info("Initializing the Windows Web Driver");
             initDriverAnyOsFamily(PATH_DRIVER_CHROME_WINDOWS);
         } else if (OS.isFamilyUnix()) {
-            LOGGER.info("Инициализация веб-драйвера для Unix");
+            LOGGER.info("Initializing the Unix Web Driver");
             initDriverAnyOsFamily(PATH_DRIVER_CHROME_UNIX);
         }
     }
     
     private void initDriverAnyOsFamily(String chrome) {
         String param = getThisProperties().getProperty(chrome);
-        LOGGER.info("Установка системной переменной путь к драйверу браузера chrome: ", param);
         System.setProperty("webdriver.chrome.driver", param);
         createDriver(getChromeOptions());
         setGeneralStartOptions();
@@ -72,23 +71,24 @@ public class DriverManager {
     
     private void createDriver(ChromeOptions chromeOptions) {
         try {
-                LOGGER.info("Создание веб-драйвера браузера chrome");
-                driver = new ChromeDriver(chromeOptions);
-                eventDriver = new EventFiringWebDriver(driver);
-                eventDriver.register(eventListener);
-            } catch(IllegalStateException ex) {
-                throwIllegalStateException(ex);
-            }
+            LOGGER.info("Creating a chrome browser web driver");
+            driver = new ChromeDriver(chromeOptions);
+            eventDriver = new EventFiringWebDriver(driver);
+            eventDriver.register(eventListener);
+        } catch(IllegalStateException ex) {
+            throwIllegalStateException(ex);
+        }
     }
         
     private void throwIllegalStateException(IllegalStateException ex) {
         if(ex.getLocalizedMessage().contains("The driver executable does not exist")) {
-            String message = "Для браузера не найден исполняемый файл вебдрайвера |"
+            String message = "Webdriver executable file not found for browser | "
                     + this.getClass().getName();
             LOGGER.info(message);
             Assertions.fail(message);
         } else if(ex.getLocalizedMessage().contains("The driver is not executable")) {
-            String message = "Нет прав для запуска вебдрайвера или файл вебдрайвера поврежден |" +
+            String message = "There is no permission to run the web driver or the "
+                    + "web driver file is corrupted | " +
                      this.getClass().getName();
             LOGGER.info(message);
             Assertions.fail(message);
@@ -97,9 +97,9 @@ public class DriverManager {
     
     private ChromeOptions getChromeOptions() {
         ChromeOptions result = new ChromeOptions();
-        LOGGER.info("Установка параметров браузера chrome");
+        LOGGER.info("Setting browser options");
         if(getThisProperties().getProperty(BROWSER_IS_HEADLESS).equals("yes")) {
-            LOGGER.info("Включение параметра браузера: BROWSER_IS_HEADLESS");
+            LOGGER.info("Enabling Browser Option: BROWSER_IS_HEADLESS");
             result.setHeadless(true);
         }
                 
@@ -108,11 +108,11 @@ public class DriverManager {
     
     private void setGeneralStartOptions() {
         if(getThisProperties().getProperty(BROWSER_DELETE_ALL_COOKIES_BEFORE_START_TESTS).equals("yes")) {
-            LOGGER.info("Очистка куки перед стартом");
+            LOGGER.info("Clearing cookies before starting");
             getDriver().manage().deleteAllCookies();
         }
         if(getThisProperties().getProperty(BROWSER_MAXIMIZE_WINDOW).equals("yes")) {
-            LOGGER.info("Разворачивание окна браузера на весь экран");
+            LOGGER.info("Maximize the browser window to full screen");
             getDriver().manage().window().maximize();
         }
     }

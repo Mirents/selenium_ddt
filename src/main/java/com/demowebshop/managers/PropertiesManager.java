@@ -29,9 +29,9 @@ public class PropertiesManager {
                             System.getProperty("propFile", "environment") +
                             ".properties")));
         } catch (IOException ex) {
-            Assertions.fail("Конфигурационный файл 'environment.properties' не найден");
+            Assertions.fail("Configuration file 'environment.properties' not found");
         } catch (IllegalArgumentException ex) {
-            Assertions.fail("Конфигурационный файл поврежден");
+            Assertions.fail("The config file is corrupted");
         }
     }
     

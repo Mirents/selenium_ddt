@@ -62,11 +62,11 @@ public class PageBase {
                 try {
                     boolean imageDisplayed = execScript("return (typeof arguments[0].naturalWidth !=\"undefined\" && arguments[0].naturalWidth > 0);", image);
                     if(!imageDisplayed) {
-                        Assertions.fail("На экране - битое изображение со ссылкой "
+                        Assertions.fail("On the screen - a broken image with a link - "
                         + imageURL);
                     }
                 } catch (Exception ex) {
-                    Assertions.fail("Ошибка проверки изображения по ссылке - "
+                    Assertions.fail("Image verification error by reference - "
                     + imageURL);
                 }
             }
@@ -81,7 +81,7 @@ public class PageBase {
             httpURLConnect.setConnectTimeout(5000);
             httpURLConnect.connect();
             if(httpURLConnect.getResponseCode()>=400) {
-                Assertions.fail("Битая ссылка " + linkUrl + " - "
+                Assertions.fail("Broken link - " + linkUrl + " - "
                         + httpURLConnect.getResponseMessage());
             }
         } catch (IOException ignore) {}
@@ -116,6 +116,6 @@ public class PageBase {
     }
     
     public void endWork() {
-        LOGGER.debug("Завершение работы со страницей {}", getDescription());
+        LOGGER.debug("Finishing the page {}", getDescription());
     }
 }
