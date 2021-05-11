@@ -1,1 +1,22 @@
-/task-2/target/
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+##############################
+## NetBeans
+##############################
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+target/
+nbactions.xml
+nb-configuration.xml
