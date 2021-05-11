@@ -10,10 +10,6 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Слушатель событий веб-драйвера с записью подробных логов.
- * Логгирование происходит на уровне TRACE
- */
 public class WebDriverListener implements WebDriverEventListener {
     private final String color;
     private final int interval;

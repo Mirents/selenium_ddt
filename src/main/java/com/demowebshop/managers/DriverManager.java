@@ -12,9 +12,6 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Класс работы с драйвером Selenium.
- */
 public class DriverManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebDriver.class);
     
@@ -37,10 +34,6 @@ public class DriverManager {
         LOGGER.info("Успешная инициализация веб-драйвера");
     }
     
-    /**
-     * Получение INSTANCE веб-драйвера.
-     * @return WebDriver
-     */
     public static EventFiringWebDriver getDriver() {
         if(eventDriver == null) {
             LOGGER.info("Создание экземпляра веб-драйвера");
@@ -50,9 +43,6 @@ public class DriverManager {
         return eventDriver;
     }
 
-    /**
-     * Завершение работы веб-драйвера.
-     */
     public static void quitDriver() {
         if(eventDriver != null) {
             LOGGER.info("Завершение работы веб-драйвера и закрытие всех активных вкладок");
@@ -62,9 +52,6 @@ public class DriverManager {
         }
     }
     
-    /**
-     * Инициализация веб-драйвера для различных ОС.
-     */
     private void initDriver() {
         if (OS.isFamilyWindows()) {
             LOGGER.info("Инициализация веб-драйвера для ОС Windows");

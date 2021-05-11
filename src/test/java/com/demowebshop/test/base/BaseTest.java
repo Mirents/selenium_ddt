@@ -6,10 +6,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-/**
- * Базовый класс, отвечающий за первоначальную настройку тестов
- * @author vadim
- */
 public class BaseTest {
     protected PageManager apptest = PageManager.getPageManager();
     
