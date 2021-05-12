@@ -31,12 +31,12 @@ public class DriverManager {
         }
 
         initDriver();
-        LOGGER.info("Successful initialization of the web driver");
+        LOGGER.debug("Successful initialization of the web driver");
     }
     
     public static EventFiringWebDriver getDriver() {
         if(eventDriver == null) {
-            LOGGER.info("Instantiating the Web Driver");
+            LOGGER.debug("Instantiating the Web Driver");
             INSTANCE = new DriverManager();
         }
         
@@ -45,7 +45,7 @@ public class DriverManager {
 
     public static void quitDriver() {
         if(eventDriver != null) {
-            LOGGER.info("Shutting down the web driver");
+            LOGGER.debug("Shutting down the web driver");
             eventDriver.quit();
             eventDriver = null;
             INSTANCE = null;
@@ -54,10 +54,10 @@ public class DriverManager {
     
     private void initDriver() {
         if (OS.isFamilyWindows()) {
-            LOGGER.info("Initializing the Windows Web Driver");
+            LOGGER.debug("Initializing the Windows Web Driver");
             initDriverAnyOsFamily(PATH_WINDOWS, PATH_DRIVER_CHROME_WINDOWS);
         } else if (OS.isFamilyUnix()) {
-            LOGGER.info("Initializing the Unix Web Driver");
+            LOGGER.debug("Initializing the Unix Web Driver");
             initDriverAnyOsFamily(PATH_UNIX, PATH_DRIVER_CHROME_UNIX);
         } else {
             String message = "Failed to initialize the web driver for this OS";
@@ -76,7 +76,7 @@ public class DriverManager {
     
     private void createDriver(ChromeOptions chromeOptions) {
         try {
-            LOGGER.info("Creating a chrome browser web driver");
+            LOGGER.debug("Creating a chrome browser web driver");
             driver = new ChromeDriver(chromeOptions);
             eventDriver = new EventFiringWebDriver(driver);
             eventDriver.register(eventListener);
@@ -89,22 +89,22 @@ public class DriverManager {
         if(ex.getLocalizedMessage().contains("The driver executable does not exist")) {
             String message = "Webdriver executable file not found for browser | "
                     + this.getClass().getName();
-            LOGGER.info(message);
+            LOGGER.debug(message);
             Assertions.fail(message);
         } else if(ex.getLocalizedMessage().contains("The driver is not executable")) {
             String message = "There is no permission to run the web driver or the "
                     + "web driver file is corrupted | " +
                      this.getClass().getName();
-            LOGGER.info(message);
+            LOGGER.debug(message);
             Assertions.fail(message);
         }
     }
     
     private ChromeOptions getChromeOptions() {
         ChromeOptions result = new ChromeOptions();
-        LOGGER.info("Setting browser options");
+        LOGGER.debug("Setting browser options");
         if(getThisProperties().getProperty(BROWSER_IS_HEADLESS).equals("yes")) {
-            LOGGER.info("Enabling Browser Option: BROWSER_IS_HEADLESS");
+            LOGGER.debug("Enabling Browser Option: BROWSER_IS_HEADLESS");
             result.setHeadless(true);
         }
                 
@@ -113,11 +113,11 @@ public class DriverManager {
     
     private void setGeneralStartOptions() {
         if(getThisProperties().getProperty(BROWSER_DELETE_ALL_COOKIES_BEFORE_START_TESTS).equals("yes")) {
-            LOGGER.info("Clearing cookies before starting");
+            LOGGER.debug("Clearing cookies before starting");
             getDriver().manage().deleteAllCookies();
         }
         if(getThisProperties().getProperty(BROWSER_MAXIMIZE_WINDOW).equals("yes")) {
-            LOGGER.info("Maximize the browser window to full screen");
+            LOGGER.debug("Maximize the browser window to full screen");
             getDriver().manage().window().maximize();
         }
     }

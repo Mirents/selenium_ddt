@@ -1,6 +1,6 @@
 ## Tutorial Project for Testing Web Applications with a Data Driven Testing Framework
 ### Description:
-The framework uses the Page Object Model. Tests are executed from an Excel spreadsheet.
+The framework uses the Page Object Model.
 ### Applied technology:
 - Language: Java 1.8
 - Build Automation Tool: Maven

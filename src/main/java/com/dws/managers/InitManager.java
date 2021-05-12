@@ -21,7 +21,7 @@ public class InitManager {
         LOGGER.debug("Setting implicityWait timeout to {} sec.", implicityWait);
         getDriver().manage().timeouts().implicitlyWait(implicityWait, TimeUnit.SECONDS);
         
-        LOGGER.info("Loading from system settings wait pageLoadTimeout");
+        LOGGER.debug("Loading from system settings wait pageLoadTimeout");
         int pageLoadTimeout = Integer.parseInt(getThisProperties().getProperty(DRIVER_PAGE_LOAD_TIMEOUT));
         LOGGER.debug("Setting the pageLoadTimeout timeout to {} sec.", pageLoadTimeout);
         getDriver().manage().timeouts().pageLoadTimeout(pageLoadTimeout, TimeUnit.SECONDS);

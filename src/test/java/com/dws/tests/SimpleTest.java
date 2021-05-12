@@ -10,10 +10,17 @@ public class SimpleTest extends BaseTest {
     public void SimpleGetYouthCardTest() {
         apptest
                 .getStartPage()
-                .clickButtonElectronics()
-                .clickButtonComputers()
-                .clickButtonElectronics()
-                .clickButtonComputers()
+                .mouseMoveToTopMenu("Computers")
+                .clickTopMenu("Desktops")
+                .mouseMoveToTopMenu("Jewelry")
+                .mouseMoveToTopMenu("Electronics")
+                .clickTopMenu("Cell phones")
+                .mouseMoveToTopMenu("Computers")
+                .clickTopMenu("Accessories")
+                .clickLeftMenu("Jewelry")
+                .clickLeftMenu("Books")
+                .clickLeftMenu("Electronics")
+                .clickLeftMenu("Cell phones")
                 .endTests();
     }
 }

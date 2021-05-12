@@ -13,12 +13,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PageBase {
     protected static final Logger LOGGER = LoggerFactory.getLogger(PageBase.class);
+    protected WebDriverWait wait = new WebDriverWait(getDriver(), 3, 1000);
+    protected Actions action = new Actions(getDriver());
     private final String description;
     private String windowHandle = "";
     
