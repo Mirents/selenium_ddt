@@ -1,10 +1,10 @@
-package com.demowebshop.managers;
+package com.dws.managers;
 
-import static com.demowebshop.managers.DriverManager.getDriver;
-import static com.demowebshop.managers.DriverManager.quitDriver;
-import static com.demowebshop.managers.PageManager.getPageManager;
-import static com.demowebshop.managers.PropertiesManager.getThisProperties;
-import static com.demowebshop.utils.ProperitesConstant.*;
+import static com.dws.managers.DriverManager.getDriver;
+import static com.dws.managers.DriverManager.quitDriver;
+import static com.dws.managers.PageManager.getPageManager;
+import static com.dws.managers.PropertiesManager.getThisProperties;
+import static com.dws.utils.ProperitesConstant.*;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriverException;

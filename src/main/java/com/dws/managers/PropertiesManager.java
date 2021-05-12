@@ -1,4 +1,4 @@
-package com.demowebshop.managers;
+package com.dws.managers;
 
 import java.io.File;
 import java.io.FileInputStream;

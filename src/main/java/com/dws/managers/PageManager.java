@@ -1,7 +1,7 @@
-package com.demowebshop.managers;
+package com.dws.managers;
 
-import com.demowebshop.base.PageBase;
-import com.demowebshop.pages.StartPage;
+import com.dws.base.PageBase;
+import com.dws.pages.StartPage;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;

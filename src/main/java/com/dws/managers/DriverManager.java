@@ -1,8 +1,8 @@
-package com.demowebshop.managers;
+package com.dws.managers;
 
-import static com.demowebshop.managers.PropertiesManager.getThisProperties;
-import static com.demowebshop.utils.ProperitesConstant.*;
-import com.demowebshop.utils.WebDriverListener;
+import static com.dws.managers.PropertiesManager.getThisProperties;
+import static com.dws.utils.ProperitesConstant.*;
+import com.dws.utils.WebDriverListener;
 import org.apache.commons.exec.OS;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -55,15 +55,20 @@ public class DriverManager {
     private void initDriver() {
         if (OS.isFamilyWindows()) {
             LOGGER.info("Initializing the Windows Web Driver");
-            initDriverAnyOsFamily(PATH_DRIVER_CHROME_WINDOWS);
+            initDriverAnyOsFamily(PATH_WINDOWS, PATH_DRIVER_CHROME_WINDOWS);
         } else if (OS.isFamilyUnix()) {
             LOGGER.info("Initializing the Unix Web Driver");
-            initDriverAnyOsFamily(PATH_DRIVER_CHROME_UNIX);
+            initDriverAnyOsFamily(PATH_UNIX, PATH_DRIVER_CHROME_UNIX);
+        } else {
+            String message = "Failed to initialize the web driver for this OS";
+            LOGGER.error(message);
+            Assertions.fail(message);
         }
     }
     
-    private void initDriverAnyOsFamily(String chrome) {
-        String param = getThisProperties().getProperty(chrome);
+    private void initDriverAnyOsFamily(String path, String chrome) {
+        String param = getThisProperties().getProperty(path) +
+                getThisProperties().getProperty(chrome);
         System.setProperty("webdriver.chrome.driver", param);
         createDriver(getChromeOptions());
         setGeneralStartOptions();

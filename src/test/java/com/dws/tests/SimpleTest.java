@@ -1,7 +1,7 @@
-package com.demowebshop.tests;
+package com.dws.tests;
 
 import org.junit.jupiter.api.*;
-import com.demowebshop.test.base.BaseTest;
+import com.dws.test.base.BaseTest;
 
 @DisplayName("Simple Test to get Youth Card")
 public class SimpleTest extends BaseTest {

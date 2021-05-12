@@ -32,14 +32,19 @@ Test run settings are located in the "environment.properties" file located in:
 - "browser.is.headless" - Non-graphical mode (yes/no)
 - "browser.maximize.window" - Maximize window to full screen (yes/no)
 - "browser.delete.all.cookies.before.start.tests" - Clearing cookies before starting (yes/no)
-- driver.implicity.wait - Timeout for execution of actions in seconds
-- driver.page.load.timeout - Page load timeout in seconds
-- path.driver.chrome.windows - Windows web driver folder
-- path.driver.chrome.unix - Unix web driver folder
-- higlilights.elements.enable - Turn on element highlighting (yes/no)
-- higlilights.elements.count - Number of flashes
-- higlilights.elements.interval - Flash interval in milliseconds
-- higlilights.elements.color - Flash color (HEX)
+- "driver.implicity.wait" - Timeout for execution of actions in seconds
+- "driver.page.load.timeout" - Page load timeout in seconds
+- "higlilights.elements.enable" - Turn on element highlighting (yes/no)
+- "higlilights.elements.count" - Number of flashes
+- "higlilights.elements.interval" - Flash interval in milliseconds
+- "higlilights.elements.color" - Flash color (HEX)
+- "path.windows" - Root folder "src" for Windiws
+- "path.unix" - Root folder "src" for Unix
+- "path.driver.chrome.windows" - The folder of the web driver for Windows relative to the "src" folder
+- "path.driver.chrome.unix" - The folder of the web driver for Unix relative to the "src" folder
+- "data.engine.path.folder" - Tests table folder
+- "path.data.engine.file" - File name of the table with tests
+- "data.engine.col.test.case.id" - 
 ## For reference
 Browser driver included: ChromeDriver 90.0.4430.24
 The browser driver is located in the folder: 

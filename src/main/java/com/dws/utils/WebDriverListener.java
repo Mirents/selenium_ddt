@@ -1,6 +1,6 @@
-package com.demowebshop.utils;
+package com.dws.utils;
 
-import com.demowebshop.managers.DriverManager;
+import com.dws.managers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;

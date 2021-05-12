@@ -1,6 +1,6 @@
-package com.demowebshop.pages;
+package com.dws.pages;
 
-import com.demowebshop.base.PageBase;
+import com.dws.base.PageBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

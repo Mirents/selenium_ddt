@@ -1,7 +1,7 @@
-package com.demowebshop.test.base;
+package com.dws.test.base;
 
-import com.demowebshop.managers.InitManager;
-import com.demowebshop.managers.PageManager;
+import com.dws.managers.InitManager;
+import com.dws.managers.PageManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

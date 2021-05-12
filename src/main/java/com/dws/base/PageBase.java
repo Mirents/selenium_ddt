@@ -1,8 +1,8 @@
-package com.demowebshop.base;
+package com.dws.base;
 
-import static com.demowebshop.managers.DriverManager.getDriver;
-import static com.demowebshop.managers.PropertiesManager.getThisProperties;
-import static com.demowebshop.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
+import static com.dws.managers.DriverManager.getDriver;
+import static com.dws.managers.PropertiesManager.getThisProperties;
+import static com.dws.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
