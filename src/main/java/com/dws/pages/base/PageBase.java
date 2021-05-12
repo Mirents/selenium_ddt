@@ -1,4 +1,4 @@
-package com.dws.base;
+package com.dws.pages.base;
 
 import static com.dws.managers.DriverManager.getDriver;
 import static com.dws.managers.PropertiesManager.getThisProperties;
@@ -115,7 +115,7 @@ public class PageBase {
         this.windowHandle = windowHandle;
     }
     
-    public void endWork() {
+    public void endTests() {
         LOGGER.debug("Finishing the page {}", getDescription());
     }
 }

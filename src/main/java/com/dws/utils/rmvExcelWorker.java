@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ExcelWorker {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelWorker.class);
+public class rmvExcelWorker {
+    private static final Logger LOGGER = LoggerFactory.getLogger(rmvExcelWorker.class);
     
     private static HSSFSheet excelSheet;
     private static HSSFWorkbook excelBook;

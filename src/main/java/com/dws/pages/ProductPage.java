@@ -5,7 +5,7 @@ import com.dws.pages.base.PageBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class StartPage extends PageBase {
+public class ProductPage extends PageBase {
     
     @FindBy(xpath = "//a[contains(text(),'Electronics')]")
     private WebElement buttonElectronics;
@@ -13,17 +13,17 @@ public class StartPage extends PageBase {
     @FindBy(xpath = "//a[contains(text(),'Computers')]")
     private WebElement buttonComputers;
     
-    public StartPage(String description) {
+    public ProductPage(String description) {
         super(description);
     }
     
-    public StartPage clickButtonElectronics() {
+    public ProductPage clickButtonElectronics() {
         buttonElectronics.click();
-        return getPageManager().getStartPage();
+        return getPageManager().getProductPage();
     }
     
-    public StartPage clickButtonComputers() {
+    public ProductPage clickButtonComputers() {
         buttonComputers.click();
-        return getPageManager().getStartPage();
+        return getPageManager().getProductPage();
     }
 }

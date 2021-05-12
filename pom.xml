@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     
     <!-- Название проекта -->
-    <name>selenium_ddt</name>
+    <name>ui_test_framework</name>
     <groupId>io.github.mirents</groupId>
-    <artifactId>selenium_ddt</artifactId>
+    <artifactId>ui_test_framework</artifactId>
     <!-- Версия -->
     <version>1.0-SNAPSHOT</version>
     

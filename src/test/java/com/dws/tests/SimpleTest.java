@@ -9,6 +9,11 @@ public class SimpleTest extends BaseTest {
     @Test
     public void SimpleGetYouthCardTest() {
         apptest
-                .getStartPage().getText();
+                .getStartPage()
+                .clickButtonElectronics()
+                .clickButtonComputers()
+                .clickButtonElectronics()
+                .clickButtonComputers()
+                .endTests();
     }
 }
