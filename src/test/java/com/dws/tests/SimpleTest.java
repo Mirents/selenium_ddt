@@ -9,18 +9,16 @@ public class SimpleTest extends BaseTest {
     @Test
     public void SimpleGetYouthCardTest() {
         apptest
-                .getStartPage()
-                .mouseMoveToTopMenu("Computers")
-                .clickTopMenu("Desktops")
-                .mouseMoveToTopMenu("Jewelry")
-                .mouseMoveToTopMenu("Electronics")
-                .clickTopMenu("Cell phones")
-                .mouseMoveToTopMenu("Computers")
-                .clickTopMenu("Accessories")
-                .clickLeftMenu("Jewelry")
-                .clickLeftMenu("Books")
+                .getMenuToPage()
                 .clickLeftMenu("Electronics")
-                .clickLeftMenu("Cell phones")
-                .endTests();
+                .clickLeftMenu("Cell phones");
+        
+        apptest
+                .getProductListPage()
+                .clickToProduct("Phone Cover");
+        
+        apptest
+                .getMenuToPage()
+                .clickLeftMenu("Electronics");
     }
 }

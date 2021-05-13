@@ -1,29 +1,23 @@
 package com.dws.pages;
 
-import static com.dws.managers.PageManager.getPageManager;
 import com.dws.pages.base.PageBase;
+import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductListPage extends PageBase {
-    
-    @FindBy(xpath = "//a[contains(text(),'Electronics')]")
-    private WebElement buttonElectronics;
-    
-    @FindBy(xpath = "//a[contains(text(),'Computers')]")
-    private WebElement buttonComputers;
+
+    @FindBy(xpath = "//div[@class='product-grid']//div[@class='product-item']")
+    private List<WebElement> listProduct;
     
     public ProductListPage(String description) {
         super(description);
     }
     
-    public ProductListPage clickButtonElectronics() {
-        buttonElectronics.click();
-        return getPageManager().getProductListPage();
-    }
-    
-    public ProductListPage clickButtonComputers() {
-        buttonComputers.click();
-        return getPageManager().getProductListPage();
+    public ProductListPage clickToProduct(String name) {
+        String xpath = "//h2//a[contains(text(),'" + name + "')]";
+        getElemFromListToBy(listProduct, By.xpath(xpath)).click();
+        return this;
     }
 }

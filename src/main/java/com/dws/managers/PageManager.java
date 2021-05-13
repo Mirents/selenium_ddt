@@ -4,7 +4,7 @@ import com.dws.pages.CartPage;
 import com.dws.pages.ProductListPage;
 import com.dws.pages.ProductPage;
 import com.dws.pages.base.PageBase;
-import com.dws.pages.StartPage;
+import com.dws.pages.MenuToPage;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -22,8 +22,8 @@ public class PageManager {
         return INSTANCE;
     }
 
-    public StartPage getStartPage() {
-        return getPage(StartPage.class);
+    public MenuToPage getMenuToPage() {
+        return getPage(MenuToPage.class);
     }
     
     public ProductListPage getProductListPage() {
@@ -40,17 +40,16 @@ public class PageManager {
 
     private <T extends PageBase> T getPage(Class<? extends PageBase> classPage) {
         if(mapPages.isEmpty() || mapPages.get(classPage.getClass().getName()) == null) {
-            if(classPage == StartPage.class)
-                mapPages.put(classPage.getClass().getName(), new StartPage("StartPage"));
+            if(classPage == MenuToPage.class)
+                mapPages.put(classPage.toString(), new MenuToPage(classPage.toString()));
             else if(classPage == ProductListPage.class)
-                mapPages.put(classPage.getClass().getName(), new ProductListPage("ProductListPage"));
+                mapPages.put(classPage.toString(), new ProductListPage(classPage.toString()));
             else if(classPage == ProductPage.class)
-                mapPages.put(classPage.getClass().getName(), new ProductPage("ProductPage"));
+                mapPages.put(classPage.toString(), new ProductPage(classPage.toString()));
             else if(classPage == CartPage.class)
-                mapPages.put(classPage.getClass().getName(), new CartPage("CartPage"));
+                mapPages.put(classPage.toString(), new CartPage(classPage.toString()));
         }
-        
-        return (T) mapPages.get(classPage.getClass().getName());
+        return (T) mapPages.get(classPage.toString());
     }
 
     void clearMapPage() {

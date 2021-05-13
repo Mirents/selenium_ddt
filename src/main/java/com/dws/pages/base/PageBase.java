@@ -1,6 +1,7 @@
 package com.dws.pages.base;
 
 import static com.dws.managers.DriverManager.getDriver;
+import static com.dws.managers.PageManager.getPageManager;
 import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +26,6 @@ public class PageBase {
     protected WebDriverWait wait = new WebDriverWait(getDriver(), 3, 1000);
     protected Actions action = new Actions(getDriver());
     private final String description;
-    private String windowHandle = "";
     
     public PageBase(String description) {
         this.description = description;
@@ -35,11 +36,7 @@ public class PageBase {
         return description;
     }
     
-    public String getDescriptionToDot() {
-        return description + ".";
-    }
-    
-    public void findBrokenLinks() {
+    public <T extends PageBase> T findBrokenLinks() {
         List<WebElement> links = getDriver().findElements(By.tagName("a"));
  
         if(links.size() > 0) {
@@ -50,9 +47,10 @@ public class PageBase {
                 isBrokenLink(url);
             }
         }
+        return (T) this;
     }
 
-    public void findBrokenImage() {
+    public <T extends PageBase> T findBrokenImage() {
         List<WebElement> images = getDriver().findElements(By.tagName("img"));
 
         if(images.size() > 0) {
@@ -64,7 +62,11 @@ public class PageBase {
                 isBrokenLink(imageURL);
 
                 try {
-                    boolean imageDisplayed = execScript("return (typeof arguments[0].naturalWidth !=\"undefined\" && arguments[0].naturalWidth > 0);", image);
+                    boolean imageDisplayed =
+                            execScript("return (typeof arguments[0]"
+                                    + ".naturalWidth !=\"undefined\" "
+                                    + "&& arguments[0].naturalWidth > 0);"
+                                    , image);
                     if(!imageDisplayed) {
                         Assertions.fail("On the screen - a broken image with a link - "
                         + imageURL);
@@ -75,6 +77,7 @@ public class PageBase {
                 }
             }
         }
+        return (T) this;
     }
 
     private void isBrokenLink(String linkUrl) {
@@ -111,15 +114,48 @@ public class PageBase {
         return flag;
     }
     
-    public String getWindowHandle() {
-        return windowHandle;
+    protected void clickToElementFromList(List<WebElement> list, String name) {
+        LOGGER.debug(">> clickToElementFromList {}", name);
+        WebElement element = getElemFromListToName(list, name);
+        element.click();
+        LOGGER.debug("<< clickToElementFromList {}", name);
     }
     
-    public void setWindowHandle(String windowHandle) {
-        this.windowHandle = windowHandle;
+    protected void mouseMoveToElementFromList(List<WebElement> list, String name) {
+        LOGGER.debug(">> mouseMoveToElementFromList {}", name);
+        WebElement element = getElemFromListToName(list, name);
+        element.click();
+        LOGGER.debug("<< mouseMoveToElementFromList {}", name);
+    }
+
+    protected WebElement getElemFromListToName(List<WebElement> list, String name) {
+        LOGGER.debug(">> getElemFromListByName {}", name);
+        for (WebElement element: list) {
+            if (element.getText().equalsIgnoreCase(name)) {
+                wait.until(ExpectedConditions.visibilityOf(element));
+                LOGGER.debug("<< getElemFromListByName {}", name);
+                return element;
+            }
+        }
+        String msg = "Element to name '" + name + "' not found to "
+                + this.getClass().getName();
+        LOGGER.error(msg);
+        Assertions.fail(msg);
+        return null;
     }
     
-    public void endTests() {
-        LOGGER.debug("Finishing the page {}", getDescription());
+    public WebElement getElemFromListToBy(List<WebElement> list, By by) {
+        LOGGER.debug(">> getElemFromListToBy {}", by);
+        for (WebElement element: list) {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            WebElement findElement = element.findElement(by);
+            LOGGER.debug("<< getElemFromListToBy {}", by);
+            return findElement;
+        }
+        String msg = "Element to by '" + by + "' not found to "
+                + this.getClass().getName();
+        LOGGER.error(msg);
+        Assertions.fail(msg);
+        return null;
     }
 }
