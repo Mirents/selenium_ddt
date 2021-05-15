@@ -1,7 +1,6 @@
 package com.dws.pages.base;
 
 import static com.dws.managers.DriverManager.getDriver;
-import static com.dws.managers.PageManager.getPageManager;
 import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
 import java.io.IOException;
@@ -124,7 +123,7 @@ public class PageBase {
     protected void mouseMoveToElementFromList(List<WebElement> list, String name) {
         LOGGER.debug(">> mouseMoveToElementFromList {}", name);
         WebElement element = getElemFromListToName(list, name);
-        element.click();
+        action.moveToElement(element).build().perform();
         LOGGER.debug("<< mouseMoveToElementFromList {}", name);
     }
 
