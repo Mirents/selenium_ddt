@@ -1,4 +1,4 @@
-## Tutorial Project for Testing Web Applications
+## Tutorial Project for Automated Web Application Testing
 ### Description:
 The framework uses the Page Object Model.
 ### Applied technology:
