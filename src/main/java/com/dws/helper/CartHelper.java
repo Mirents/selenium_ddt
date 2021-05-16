@@ -10,7 +10,7 @@ public class CartHelper {
     private static CartHelper INSTANCE;
     private List<ProductHelper> cart;
     
-    public static CartHelper geCartHelper() {
+    public static CartHelper getCartHelper() {
         if(INSTANCE == null) {
             INSTANCE = new CartHelper();
         }
@@ -51,6 +51,10 @@ public class CartHelper {
         for(ProductHelper ph: cart)
             total += ph.getQuantity();
         return total;
+    }
+    
+    public void clearCartList() {
+        cart.clear();
     }
     
     @Override

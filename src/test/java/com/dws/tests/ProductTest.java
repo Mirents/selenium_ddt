@@ -22,7 +22,7 @@ public class ProductTest extends BaseTest {
         apptest
                 .getProductListPage()
                 .clickToProduct("Computing and Internet");
-        // Add a product to the cart and
+        // Add a product to the cart
         apptest
                 .getProductPage()
                 .inputQuanityClear()
@@ -67,8 +67,7 @@ public class ProductTest extends BaseTest {
         apptest
                 .getProductListPage()
                 .clickToProduct("14.1-inch Laptop");
-        // Add a product to the cart and
-        // check the correctness of the message
+        // Add a product to the cart
         apptest
                 .getProductPage()
                 .inputQuanityClear()
@@ -117,9 +116,6 @@ public class ProductTest extends BaseTest {
                 .findBrokenImage();
         
         // Find broken image on product page
-        apptest
-                .getMenuToPage()
-                .clickLeftMenu("Jewelry");
         apptest
                 .getProductListPage()
                 .clickToProduct("Create Your Own Jewelry");

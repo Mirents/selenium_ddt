@@ -3,6 +3,7 @@ package com.dws.pages.base;
 import com.dws.helper.CartHelper;
 import static com.dws.managers.DriverManager.getDriver;
 import static com.dws.managers.PropertiesManager.getThisProperties;
+import static com.dws.managers.WaitManager.getWaitManager;
 import static com.dws.utils.ProperitesConstant.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -23,17 +24,11 @@ import org.slf4j.LoggerFactory;
 
 public class PageBase {
     protected static final Logger LOGGER = LoggerFactory.getLogger(PageBase.class);
-    protected WebDriverWait wait;
     protected Actions action = new Actions(getDriver());
     protected CartHelper cartHelper;
     
     public PageBase() {
         PageFactory.initElements(getDriver(), this);
-        long waitTime = Long.parseLong(getThisProperties()
-                .getProperty(WAIT_TIMEOUTINSECONDS));
-        long waitSleep = Long.parseLong(getThisProperties()
-                .getProperty(WAIT_SLEEPINMILLIS));
-        wait = new WebDriverWait(getDriver(), waitTime, waitSleep);
     }
     
     public <T extends PageBase> T findBrokenLinks() {
@@ -127,7 +122,7 @@ public class PageBase {
     protected WebElement getElemFromListToName(List<WebElement> list, String name) {
         for (WebElement element: list) {
             if (element.getText().equalsIgnoreCase(name)) {
-                wait.until(ExpectedConditions.visibilityOf(element));
+                getWaitManager().until(ExpectedConditions.visibilityOf(element));
                 return element;
             }
         }
@@ -140,7 +135,7 @@ public class PageBase {
     
     public WebElement getElemFromListToBy(List<WebElement> list, By by) {
         for (WebElement element: list) {
-            wait.until(ExpectedConditions.visibilityOf(element));
+            getWaitManager().until(ExpectedConditions.visibilityOf(element));
             WebElement findElement = element.findElement(by);
             return findElement;
         }

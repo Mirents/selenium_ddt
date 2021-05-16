@@ -1,12 +1,13 @@
 package com.dws.pages;
 
-import static com.dws.helper.CartHelper.geCartHelper;
 import com.dws.helper.ProductHelper;
 import com.dws.pages.base.PageBase;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import static com.dws.helper.CartHelper.getCartHelper;
+import static com.dws.managers.WaitManager.getWaitManager;
 
 public class ProductPage extends PageBase {
     
@@ -33,13 +34,13 @@ public class ProductPage extends PageBase {
         float price = Float.parseFloat(labelPrice);
         String labelQuantity = inputQuanity.getAttribute("value").replaceAll("[^\\d.]", "");
         int quantity = Integer.parseInt(labelQuantity);
-        geCartHelper().addProduct(new ProductHelper(labelProductName.getText(),
+        getCartHelper().addProduct(new ProductHelper(labelProductName.getText(),
                 price, quantity));
     }
     
     public ProductPage assertBarNotificationColor(String color) {
         boolean isContains = false;
-        wait.until(ExpectedConditions.visibilityOf(barNotification));
+        getWaitManager().until(ExpectedConditions.visibilityOf(barNotification));
         if(barNotification.getCssValue("background").contains(color))
             isContains = true;
         Assertions.assertTrue(isContains, "Checking the correctness of the color");
@@ -47,7 +48,7 @@ public class ProductPage extends PageBase {
     }
     
     public ProductPage assertBarNotificationText(String text) {
-        wait.until(ExpectedConditions.textToBePresentInElement(barNotificationMessage, text));
+        getWaitManager().until(ExpectedConditions.textToBePresentInElement(barNotificationMessage, text));
         Assertions.assertEquals(barNotificationMessage.getText(), text,
                 "Checking the message text");
         return this;
@@ -65,7 +66,7 @@ public class ProductPage extends PageBase {
     
     public ProductPage inputQuanityEnterNumber(int number) {
         inputQuanity.sendKeys(Integer.toString(number));
-        geCartHelper().getProductByName(labelProductName.getText()).setQuantity(number);
+        getCartHelper().getProductByName(labelProductName.getText()).setQuantity(number);
         return this;
     }
     
