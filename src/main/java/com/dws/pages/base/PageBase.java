@@ -1,5 +1,6 @@
 package com.dws.pages.base;
 
+import com.dws.helper.CartHelper;
 import static com.dws.managers.DriverManager.getDriver;
 import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
@@ -24,6 +25,7 @@ public class PageBase {
     protected static final Logger LOGGER = LoggerFactory.getLogger(PageBase.class);
     protected WebDriverWait wait = new WebDriverWait(getDriver(), 3, 1000);
     protected Actions action = new Actions(getDriver());
+    protected CartHelper cartHelper;
     private final String description;
     
     public PageBase(String description) {

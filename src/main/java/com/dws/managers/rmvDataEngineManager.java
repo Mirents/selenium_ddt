@@ -1,6 +1,6 @@
 package com.dws.managers;
 
-import com.dws.pages.MenuToPage;
+import com.dws.pages.MenuPage;
 import com.dws.utils.rmvExcelWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ public class rmvDataEngineManager {
     private static final String SHEET_TEST_STEPS = "Test Steps";
     private static final String SHEET_TEST_CASES = "Test Cases";
 
-    private static final MenuToPage startPage = new MenuToPage("StartPage");
+    private static final MenuPage startPage = new MenuPage("StartPage");
 
     public rmvDataEngineManager() {
         try {

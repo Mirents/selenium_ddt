@@ -4,7 +4,7 @@ import com.dws.pages.CartPage;
 import com.dws.pages.ProductListPage;
 import com.dws.pages.ProductPage;
 import com.dws.pages.base.PageBase;
-import com.dws.pages.MenuToPage;
+import com.dws.pages.MenuPage;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -22,8 +22,8 @@ public class PageManager {
         return INSTANCE;
     }
 
-    public MenuToPage getMenuToPage() {
-        return getPage(MenuToPage.class);
+    public MenuPage getMenuToPage() {
+        return getPage(MenuPage.class);
     }
     
     public ProductListPage getProductListPage() {
@@ -40,8 +40,8 @@ public class PageManager {
 
     private <T extends PageBase> T getPage(Class<? extends PageBase> classPage) {
         if(mapPages.isEmpty() || mapPages.get(classPage.getClass().getName()) == null) {
-            if(classPage == MenuToPage.class)
-                mapPages.put(classPage.toString(), new MenuToPage(classPage.toString()));
+            if(classPage == MenuPage.class)
+                mapPages.put(classPage.toString(), new MenuPage(classPage.toString()));
             else if(classPage == ProductListPage.class)
                 mapPages.put(classPage.toString(), new ProductListPage(classPage.toString()));
             else if(classPage == ProductPage.class)

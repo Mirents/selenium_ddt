@@ -1,5 +1,7 @@
 package com.dws.pages;
 
+import static com.dws.helper.CartHelper.geCartHelper;
+import com.dws.helper.ProductHelper;
 import com.dws.pages.base.PageBase;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,7 @@ public class ProductPage extends PageBase {
     @FindBy(xpath = "//div[contains(@class, 'add-to')]//input[contains(@class, 'add-to-c')]")
     private WebElement buttonAddToCart;
     
-    @FindBy(xpath = "//input[@class='qty-input']")
+    @FindBy(xpath = "//input[contains(@class, 'qty-input')]")
     private WebElement inputQuanity;
     
     @FindBy(xpath = "//div[@id='bar-notification']")
@@ -20,11 +22,23 @@ public class ProductPage extends PageBase {
     @FindBy(xpath = "//div[@id='bar-notification']//p[@class=\"content\"]")
     private WebElement barNotificationMessage;
     
+    @FindBy(xpath = "//h1")
+    private WebElement labelProductName;
+    
+    @FindBy(xpath = "//span[@itemprop='price']")
+    private WebElement labelProductPrice;
+        
     public ProductPage(String description) {
         super(description);
+        String labelPrice = labelProductPrice.getText().replaceAll("[^\\d.]", "");
+        float price = Float.parseFloat(labelPrice);
+        String labelQuantity = inputQuanity.getAttribute("value").replaceAll("[^\\d.]", "");
+        int quantity = Integer.parseInt(labelQuantity);
+        geCartHelper().addProduct(new ProductHelper(labelProductName.getText(),
+                price, quantity));
     }
     
-    public ProductPage AssertBarNotificationColor(String color) {
+    public ProductPage assertBarNotificationColor(String color) {
         LOGGER.debug(">> AssertBarNotificationColor");
         boolean isContains = false;
         wait.until(ExpectedConditions.visibilityOf(barNotification));
@@ -35,7 +49,7 @@ public class ProductPage extends PageBase {
         return this;
     }
     
-    public ProductPage AssertBarNotificationText(String text) {
+    public ProductPage assertBarNotificationText(String text) {
         LOGGER.debug(">> AssertBarNotificationText");
         wait.until(ExpectedConditions.textToBePresentInElement(barNotificationMessage, text));
         Assertions.assertEquals(barNotificationMessage.getText(), text,
@@ -45,13 +59,18 @@ public class ProductPage extends PageBase {
     }
     
     public ProductPage clickButtonAddToCart() {
-        action.moveToElement(buttonAddToCart).click().perform();
         buttonAddToCart.click();
         return this;
     }
     
     public ProductPage inputQuanityEnterText(String text) {
         inputQuanity.sendKeys(text);
+        return this;
+    }
+    
+    public ProductPage inputQuanityEnterNumber(int number) {
+        inputQuanity.sendKeys(Integer.toString(number));
+        geCartHelper().getProductByName(labelProductName.getText()).setQuantity(number);
         return this;
     }
     
