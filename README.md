@@ -55,3 +55,5 @@ Browser driver included: ChromeDriver 90.0.4430.24
 The browser driver is located in the folder: 
 - to Windows - "src/test/resources/drivers/windows/chromedriver.exe"
 - to Unix - "src/test/resources/drivers/unix/chromedriver"
+
+To draw the diagram, the following was used: [yEd Graph Editor](https://www.yworks.com/products/yed)
