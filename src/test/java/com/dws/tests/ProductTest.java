@@ -5,14 +5,13 @@ import com.dws.test.base.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-@DisplayName("Testing adding products")
+@DisplayName("Testing the product page")
 public class ProductTest extends BaseTest {
     String colorErrorMessage = "204, 0, 0";
     String textErrorMessage = "Quantity should be positive";
     String colorSuccessMessage = "145, 189, 9";
     String textSuccessMessage = "The product has been added to your shopping cart";
 
-    @Disabled("Временно отключен")
     @Test
     public void CheckCartPriceTest() {
         // Go to the "Books" menu
@@ -56,7 +55,6 @@ public class ProductTest extends BaseTest {
                 .assertTotalPrice();
     }
     
-    @Disabled("Временно отключен")
     @ParameterizedTest
     @ValueSource(strings = {"5", "94", "1025"})
     public void SuccessMessageTest(int input) {
@@ -80,7 +78,6 @@ public class ProductTest extends BaseTest {
                 .assertBarNotificationText(textSuccessMessage);
     }
     
-    @Disabled("Временно отключен")
     @ParameterizedTest
     @ValueSource(strings = {"-1", "f", "6.5", "4,3", "!", "%:;?", "0"})
     public void ErrorMessageTest(String input) {
@@ -111,7 +108,6 @@ public class ProductTest extends BaseTest {
                 .findBrokenImage();
     }
     
-    @Disabled("Временно отключен")
     @Test
     public void CheckBrokenImageProductListPageTest() {
         // Find broken image on product listing page

@@ -1,4 +1,4 @@
-## Tutorial Project for Testing Web Applications with a Data Driven Testing Framework
+## Tutorial Project for Testing Web Applications
 ### Description:
 The framework uses the Page Object Model.
 ### Applied technology:
@@ -34,6 +34,8 @@ Test run settings are located in the "environment.properties" file located in:
 - "browser.delete.all.cookies.before.start.tests" - Clearing cookies before starting (yes/no)
 - "driver.implicity.wait" - Timeout for execution of actions in seconds
 - "driver.page.load.timeout" - Page load timeout in seconds
+- "wait.timeoutinseconds" - Wait element timeout in seconds
+- "wait.sleepinmillis" - Wait element action timeout in milliseconds
 - "higlilights.elements.enable" - Turn on element highlighting (yes/no)
 - "higlilights.elements.count" - Number of flashes
 - "higlilights.elements.interval" - Flash interval in milliseconds
