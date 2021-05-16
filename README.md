@@ -46,7 +46,10 @@ Test run settings are located in the "environment.properties" file located in:
 - "path.driver.chrome.unix" - The folder of the web driver for Unix relative to the "src" folder
 - "data.engine.path.folder" - Tests table folder
 - "path.data.engine.file" - File name of the table with tests
-- "data.engine.col.test.case.id" - 
+
+## Framework structure
+![Image alt](https://github.com/Mirents/ui_test_framework/raw/main/src/test/resources/SchemeFramework.jpg)
+
 ## For reference
 Browser driver included: ChromeDriver 90.0.4430.24
 The browser driver is located in the folder: 
