@@ -3,7 +3,7 @@ package com.dws.pages.base;
 import com.dws.helper.CartHelper;
 import static com.dws.managers.DriverManager.getDriver;
 import static com.dws.managers.PropertiesManager.getThisProperties;
-import static com.dws.utils.ProperitesConstant.DRIVER_IMPLICITY_WAIT;
+import static com.dws.utils.ProperitesConstant.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -23,18 +23,17 @@ import org.slf4j.LoggerFactory;
 
 public class PageBase {
     protected static final Logger LOGGER = LoggerFactory.getLogger(PageBase.class);
-    protected WebDriverWait wait = new WebDriverWait(getDriver(), 3, 1000);
+    protected WebDriverWait wait;
     protected Actions action = new Actions(getDriver());
     protected CartHelper cartHelper;
-    private final String description;
     
-    public PageBase(String description) {
-        this.description = description;
+    public PageBase() {
         PageFactory.initElements(getDriver(), this);
-    }    
-    
-    public String getDescription() {
-        return description;
+        long waitTime = Long.parseLong(getThisProperties()
+                .getProperty(WAIT_TIMEOUTINSECONDS));
+        long waitSleep = Long.parseLong(getThisProperties()
+                .getProperty(WAIT_SLEEPINMILLIS));
+        wait = new WebDriverWait(getDriver(), waitTime, waitSleep);
     }
     
     public <T extends PageBase> T findBrokenLinks() {
@@ -116,25 +115,19 @@ public class PageBase {
     }
     
     protected void clickToElementFromList(List<WebElement> list, String name) {
-        LOGGER.debug(">> clickToElementFromList {}", name);
         WebElement element = getElemFromListToName(list, name);
         element.click();
-        LOGGER.debug("<< clickToElementFromList {}", name);
     }
     
     protected void mouseMoveToElementFromList(List<WebElement> list, String name) {
-        LOGGER.debug(">> mouseMoveToElementFromList {}", name);
         WebElement element = getElemFromListToName(list, name);
         action.moveToElement(element).build().perform();
-        LOGGER.debug("<< mouseMoveToElementFromList {}", name);
     }
 
     protected WebElement getElemFromListToName(List<WebElement> list, String name) {
-        LOGGER.debug(">> getElemFromListByName {}", name);
         for (WebElement element: list) {
             if (element.getText().equalsIgnoreCase(name)) {
                 wait.until(ExpectedConditions.visibilityOf(element));
-                LOGGER.debug("<< getElemFromListByName {}", name);
                 return element;
             }
         }
@@ -146,11 +139,9 @@ public class PageBase {
     }
     
     public WebElement getElemFromListToBy(List<WebElement> list, By by) {
-        LOGGER.debug(">> getElemFromListToBy {}", by);
         for (WebElement element: list) {
             wait.until(ExpectedConditions.visibilityOf(element));
             WebElement findElement = element.findElement(by);
-            LOGGER.debug("<< getElemFromListToBy {}", by);
             return findElement;
         }
         String msg = "Element to by '" + by + "' not found to "

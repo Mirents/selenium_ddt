@@ -28,8 +28,7 @@ public class ProductPage extends PageBase {
     @FindBy(xpath = "//span[@itemprop='price']")
     private WebElement labelProductPrice;
         
-    public ProductPage(String description) {
-        super(description);
+    public ProductPage() {
         String labelPrice = labelProductPrice.getText().replaceAll("[^\\d.]", "");
         float price = Float.parseFloat(labelPrice);
         String labelQuantity = inputQuanity.getAttribute("value").replaceAll("[^\\d.]", "");
@@ -39,22 +38,18 @@ public class ProductPage extends PageBase {
     }
     
     public ProductPage assertBarNotificationColor(String color) {
-        LOGGER.debug(">> AssertBarNotificationColor");
         boolean isContains = false;
         wait.until(ExpectedConditions.visibilityOf(barNotification));
         if(barNotification.getCssValue("background").contains(color))
             isContains = true;
         Assertions.assertTrue(isContains, "Checking the correctness of the color");
-        LOGGER.debug("<< AssertBarNotificationColor");
         return this;
     }
     
     public ProductPage assertBarNotificationText(String text) {
-        LOGGER.debug(">> AssertBarNotificationText");
         wait.until(ExpectedConditions.textToBePresentInElement(barNotificationMessage, text));
         Assertions.assertEquals(barNotificationMessage.getText(), text,
                 "Checking the message text");
-        LOGGER.debug("<< AssertBarNotificationText");
         return this;
     }
     

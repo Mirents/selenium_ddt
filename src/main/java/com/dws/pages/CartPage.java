@@ -10,14 +10,10 @@ public class CartPage extends PageBase {
     
     @FindBy(xpath = "//td[@class='cart-total-right']//strong")
     private WebElement labelTotal;
-    
-    public CartPage(String description) {
-        super(description);
-    }
-    
+        
     public CartPage assertTotalPrice() {
-        float fromLabelTotal = Float.parseFloat(labelTotal.getText());
-        Assertions.assertEquals(geCartHelper().getTotalPrice(), fromLabelTotal,
+        float priceLabelTotal = Float.parseFloat(labelTotal.getText());
+        Assertions.assertEquals(geCartHelper().getTotalPrice(), priceLabelTotal,
                 "Checking the total value of the goods");
         return this;
     }

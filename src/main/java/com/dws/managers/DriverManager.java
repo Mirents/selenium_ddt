@@ -21,10 +21,13 @@ public class DriverManager {
     private static WebDriverListener eventListener;
     
     private DriverManager() {
-        if(getThisProperties().getProperty(HIGLILIGHTS_ELEMENTS_ENABLE).equals("yes")) {
+        if(getThisProperties()
+                .getProperty(HIGLILIGHTS_ELEMENTS_ENABLE).equals("yes")) {
             String color = getThisProperties().getProperty(HIGLILIGHTS_ELEMENTS_COLOR);
-            int interval = Integer.parseInt(getThisProperties().getProperty(HIGLILIGHTS_ELEMENTS_INTERVAL));
-            int count = Integer.parseInt(getThisProperties().getProperty(HIGLILIGHTS_ELEMENTS_COUNT));
+            int interval = Integer.parseInt(getThisProperties()
+                    .getProperty(HIGLILIGHTS_ELEMENTS_INTERVAL));
+            int count = Integer.parseInt(getThisProperties()
+                    .getProperty(HIGLILIGHTS_ELEMENTS_COUNT));
             eventListener = new WebDriverListener(color, interval, count);
         } else {
             eventListener = new WebDriverListener("#000000", 0, 0);
@@ -112,7 +115,9 @@ public class DriverManager {
     }
     
     private void setGeneralStartOptions() {
-        if(getThisProperties().getProperty(BROWSER_DELETE_ALL_COOKIES_BEFORE_START_TESTS).equals("yes")) {
+        if(getThisProperties()
+                .getProperty(BROWSER_DELETE_ALL_COOKIES_BEFORE_START_TESTS)
+                .equals("yes")) {
             LOGGER.debug("Clearing cookies before starting");
             getDriver().manage().deleteAllCookies();
         }

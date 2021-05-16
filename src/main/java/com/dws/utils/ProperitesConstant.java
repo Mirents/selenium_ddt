@@ -14,9 +14,9 @@ public class ProperitesConstant {
             
     public static final String DRIVER_PAGE_LOAD_TIMEOUT = "driver.page.load.timeout";
             
-//    public static final String WAIT_TIMEOUTINSECONDS = "wait.timeoutinseconds";
-//            
-//    public static final String WAIT_SLEEPINMILLIS = "wait.sleepinmillis";
+    public static final String WAIT_TIMEOUTINSECONDS = "wait.timeoutinseconds";
+            
+    public static final String WAIT_SLEEPINMILLIS = "wait.sleepinmillis";
             
     public static final String HIGLILIGHTS_ELEMENTS_ENABLE = "higlilights.elements.enable";
             

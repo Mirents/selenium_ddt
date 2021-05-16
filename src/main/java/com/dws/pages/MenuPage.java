@@ -23,10 +23,6 @@ public class MenuPage extends PageBase {
     
     @FindBy(xpath = "//span[@class='cart-qty']")
     private WebElement labelShoppingCartQuantity;
-    
-    public MenuPage(String description) {
-        super(description);
-    }
 
     public MenuPage mouseMoveToTopMenu(String name) {
         mouseMoveToElementFromList(listTopMenu, name);

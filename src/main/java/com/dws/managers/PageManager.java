@@ -41,13 +41,13 @@ public class PageManager {
     private <T extends PageBase> T getPage(Class<? extends PageBase> classPage) {
         if(mapPages.isEmpty() || mapPages.get(classPage.getClass().getName()) == null) {
             if(classPage == MenuPage.class)
-                mapPages.put(classPage.toString(), new MenuPage(classPage.toString()));
+                mapPages.put(classPage.toString(), new MenuPage());
             else if(classPage == ProductListPage.class)
-                mapPages.put(classPage.toString(), new ProductListPage(classPage.toString()));
+                mapPages.put(classPage.toString(), new ProductListPage());
             else if(classPage == ProductPage.class)
-                mapPages.put(classPage.toString(), new ProductPage(classPage.toString()));
+                mapPages.put(classPage.toString(), new ProductPage());
             else if(classPage == CartPage.class)
-                mapPages.put(classPage.toString(), new CartPage(classPage.toString()));
+                mapPages.put(classPage.toString(), new CartPage());
         }
         return (T) mapPages.get(classPage.toString());
     }

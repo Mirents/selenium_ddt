@@ -16,17 +16,24 @@ public class InitManager {
     private static final InitManager initManager = new InitManager();
 
     public static void initFramework() {
-        LOGGER.debug("Loading from system settings wait implicityWait");
-        int implicityWait = Integer.parseInt(getThisProperties().getProperty(DRIVER_IMPLICITY_WAIT));
+        LOGGER.info("Start init framework");
+        int implicityWait = Integer.parseInt(getThisProperties()
+                .getProperty(DRIVER_IMPLICITY_WAIT));
         LOGGER.debug("Setting implicityWait timeout to {} sec.", implicityWait);
         getDriver().manage().timeouts().implicitlyWait(implicityWait, TimeUnit.SECONDS);
         
-        LOGGER.debug("Loading from system settings wait pageLoadTimeout");
-        int pageLoadTimeout = Integer.parseInt(getThisProperties().getProperty(DRIVER_PAGE_LOAD_TIMEOUT));
+        int pageLoadTimeout = Integer.parseInt(getThisProperties()
+                .getProperty(DRIVER_PAGE_LOAD_TIMEOUT));
         LOGGER.debug("Setting the pageLoadTimeout timeout to {} sec.", pageLoadTimeout);
         getDriver().manage().timeouts().pageLoadTimeout(pageLoadTimeout, TimeUnit.SECONDS);
     }
 
+    public static void quitFramework() {
+        quitDriver();
+        LOGGER.info("Clearing the class store of web pages");
+        getPageManager().clearMapPage();
+    }
+    
     public static void openBrowser() {
         try {
             String app_URL = getThisProperties().getProperty(APP_URL);
@@ -59,10 +66,8 @@ public class InitManager {
         }
     }
     
-    public static void quitFramework() {
-        LOGGER.debug("Shutting down the web driver");
-        quitDriver();
-        LOGGER.debug("Clearing the class store of web pages");
-        getPageManager().clearMapPage();
+    public static void clearCookies() {
+        getDriver().manage().deleteAllCookies();
+        LOGGER.debug("Clear Cookies");
     }
 }
