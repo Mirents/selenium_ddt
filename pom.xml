@@ -4,28 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <!-- Название проекта -->
+    <!-- The name of the project -->
     <name>ui_test_framework</name>
     <groupId>io.github.mirents</groupId>
     <artifactId>ui_test_framework</artifactId>
-    <!-- Версия -->
+    <!-- Version -->
     <version>1.0-SNAPSHOT</version>
     
-    <!-- Свойства проекта -->
+    <!-- Project properties -->
     <properties>
 
-        <!-- Коддировка -->
+        <!-- Encoding -->
         <encoding.type>UTF-8</encoding.type>
         <project.build.sourceEncoding>${encoding.type}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding.type}</project.reporting.outputEncoding>
         <file.encoding>${encoding.type}</file.encoding>
 
-        <!-- Версия Java -->
+        <!-- Version Java -->
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <!-- Версия зависимостей -->
+        <!-- Dependency version -->
         <selenium-java.version>3.141.59</selenium-java.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <junit-platform-launcher.version>1.6.2</junit-platform-launcher.version>
@@ -38,7 +38,7 @@
 
     </properties>
 
-    <!-- Подключаемые зависимости -->
+    <!-- Pluggable dependencies -->
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -80,14 +80,6 @@
             <version>${slf4j.version}</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <!-- Before reading table files to DDT -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${apache.poi.version}</version>
-        </dependency>
-        
         <dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
@@ -97,7 +89,7 @@
 
     </dependencies>
     
-    <!-- Параметры подключаемых плагинов -->
+    <!-- Plugin parameters -->
     <build>
         <plugins>
 
