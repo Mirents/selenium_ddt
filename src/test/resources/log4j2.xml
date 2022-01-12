@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN"> <!-- Задание уровня детализации внутренних сообщений log4j -->
+
+    <!-- Аппендеры - это объекты, которые реализуют вывод данных в Консоль/Файл/БД.. -->
+    <Appenders>
+
+        <!-- Аппендер для вывода информации в консоль -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Задание шаблона вывода на экран -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{10} - %msg%n"/>
+        </Console>
+
+        <!-- Аппендер для вывода информации в файл -->
+        <RollingFile name="Scenario"
+                     fileName="logs/log.txt"
+                     filePattern="logs/app-%d{MM-dd-yyyy}.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{10} - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="10"/> <!-- Интервал создания нового файла с записями логов -->
+                <TimeBasedTriggeringPolicy size = "10 MB" /> <!-- Если размер файла превысит 100 мб, заведется новый файл -->
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <!--  Здесь выставляется уровни логов, которые необходимо выводить в консоль (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF) -->
+        <Root level="all">
+            <AppenderRef ref="Console"
+                         level="DEBUG"/> <!-- Ссылка на аппендер, в который будут выводиться сообщения логгера  -->
+            <AppenderRef ref="Scenario"
+                         level="TRACE"/> <!-- Ссылка на аппендер, в который будет записывать логи в файл -->
+        </Root>
+    </Loggers>
+</Configuration>
