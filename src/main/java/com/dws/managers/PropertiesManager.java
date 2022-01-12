@@ -26,10 +26,10 @@ public class PropertiesManager {
         try {
             properties.load(new FileInputStream(new File(
                     "src/test/resources/" +
-                            System.getProperty("propFile", "environment") +
+                            System.getProperty("propFile", "application") +
                             ".properties")));
         } catch (IOException ex) {
-            Assertions.fail("Configuration file 'environment.properties' not found");
+            Assertions.fail("Configuration file 'application.properties' not found");
         } catch (IllegalArgumentException ex) {
             Assertions.fail("The config file is corrupted");
         }

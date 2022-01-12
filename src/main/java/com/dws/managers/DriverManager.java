@@ -4,18 +4,16 @@ import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.*;
 import com.dws.utils.WebDriverListener;
 import org.apache.commons.exec.OS;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DriverManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriver.class);
-    
-    private static WebDriver driver;
+    private static final Logger LOGGER = LogManager.getLogger(WebDriver.class);
     private static EventFiringWebDriver eventDriver;
     private static DriverManager INSTANCE = null;
     private static WebDriverListener eventListener;
@@ -80,7 +78,7 @@ public class DriverManager {
     private void createDriver(ChromeOptions chromeOptions) {
         try {
             LOGGER.debug("Creating a chrome browser web driver");
-            driver = new ChromeDriver(chromeOptions);
+            WebDriver driver = new ChromeDriver(chromeOptions);
             eventDriver = new EventFiringWebDriver(driver);
             eventDriver.register(eventListener);
         } catch(IllegalStateException ex) {

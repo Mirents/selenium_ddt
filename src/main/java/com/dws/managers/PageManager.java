@@ -7,11 +7,11 @@ import com.dws.pages.base.PageBase;
 import com.dws.pages.MenuPage;
 import java.util.HashMap;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class PageManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PageManager.class);
+    private static final Logger LOGGER = LogManager.getLogger(PageManager.class);
     private static PageManager INSTANCE;
     private static Map<String, PageBase> mapPages = new HashMap<>();
 

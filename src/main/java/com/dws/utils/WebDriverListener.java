@@ -7,8 +7,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class WebDriverListener implements WebDriverEventListener {
     private final String color;
@@ -21,7 +21,7 @@ public class WebDriverListener implements WebDriverEventListener {
         this.count = count;
     }
     
-    private static final Logger LOGGER = LoggerFactory
+    private static final Logger LOGGER = LogManager
             .getLogger(WebDriverListener.class);
 
     @Override
