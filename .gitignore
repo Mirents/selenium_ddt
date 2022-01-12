@@ -20,3 +20,8 @@ nbdist/
 target/
 nbactions.xml
 nb-configuration.xml
+
+##############################
+## Project
+##############################
+logs/
