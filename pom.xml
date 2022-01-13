@@ -6,7 +6,7 @@
     
     <!-- The name of the project -->
     <name>ui_test_framework</name>
-    <groupId>io.github.mirents</groupId>
+    <groupId>com.github.mirents</groupId>
     <artifactId>ui_test_framework</artifactId>
     <!-- Version -->
     <version>1.0-SNAPSHOT</version>

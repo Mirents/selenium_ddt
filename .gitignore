@@ -13,11 +13,9 @@ hs_err_pid*
 ## NetBeans
 ##############################
 nbproject/
-build/
 nbbuild/
 dist/
 nbdist/
-target/
 nbactions.xml
 nb-configuration.xml
 
@@ -25,6 +23,8 @@ nb-configuration.xml
 ## Project
 ##############################
 logs/
+target/
+build/
 
 ##############################
 ## Windows
