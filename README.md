@@ -7,6 +7,7 @@ The framework uses the Page Object Model.
 - Language: Java 1.8
 - Build Automation Tool: Maven
 - Frameworks: JUnit 5
+- Logger: Log4j2 with Slf4j
 - Drivers used: Selenium
 - Test website: demowebshop.tricentis.com
 ### Features:
