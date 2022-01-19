@@ -55,4 +55,7 @@ The browser driver is located in the folder:
 - to Windows - "src/test/resources/drivers/windows/chromedriver.exe"
 - to Unix - "src/test/resources/drivers/unix/chromedriver"
 
+## Note
+In a real framework project, highlighting can cause tests to fail when there is a viewport-blocking element.
+
 To draw the diagram, the following was used: [yEd Graph Editor](https://www.yworks.com/products/yed)
