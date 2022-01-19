@@ -1,7 +1,7 @@
 ## Tutorial Project for Automated Web Application Testing
 ### Description:
 The framework uses the Page Object Model.
-## Framework structure
+### Framework structure
 ![Image alt](https://github.com/Mirents/ui_test_framework/raw/main/src/test/resources/SchemeFramework.jpg)
 ### Applied technology:
 - Language: Java 1.8
@@ -17,7 +17,7 @@ The framework uses the Page Object Model.
 - Launching the browser in normal and non-graphical mode
 - Run on Unix and Windows operating systems
 - Element highlighting when interacting
-## Installation and launch
+### Installation and launch
 - Copy the repository
 - Add project to IDE
 - Run command:
@@ -28,7 +28,7 @@ To run tests on Unix, you need to run the command for the "/unix/chromedriver" f
 ```sh
 chmod u+x chromedriver
 ```
-## Settings
+### Settings
 Test run settings are located in the "application.properties" file located in:
 "src/test/resources/"application.properties"
 - "app.url" - Test site url address
@@ -49,13 +49,13 @@ Test run settings are located in the "application.properties" file located in:
 - "path.driver.chrome.unix" - The folder of the web driver for Unix relative to the "src" folder
 - "data.engine.path.folder" - Tests table folder
 - "path.data.engine.file" - File name of the table with tests
-## For reference
+### For reference
 Browser driver included: ChromeDriver 97.0.4692.71
 The browser driver is located in the folder: 
 - to Windows - "src/test/resources/drivers/windows/chromedriver.exe"
 - to Unix - "src/test/resources/drivers/unix/chromedriver"
 
-## Note
+### Note
 In a real framework project, highlighting can cause tests to fail when there is a viewport-blocking element.
 
 To draw the diagram, the following was used: [yEd Graph Editor](https://www.yworks.com/products/yed)
