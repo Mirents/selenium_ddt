@@ -33,7 +33,7 @@
         <apache.poi.version>4.1.2</apache.poi.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
-        <org.projectlombok.version>1.18.20</org.projectlombok.version>
+        <lombok.version>1.18.20</lombok.version>
 
     </properties>
 
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${org.projectlombok.version}</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
 	</dependency>
 
