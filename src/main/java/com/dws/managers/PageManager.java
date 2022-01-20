@@ -12,14 +12,14 @@ import org.apache.logging.log4j.Logger;
 
 public class PageManager {
     private static final Logger LOGGER = LogManager.getLogger(PageManager.class);
-    private static PageManager INSTANCE;
+    private static PageManager instance;
     private static Map<String, PageBase> mapPages = new HashMap<>();
 
     public static PageManager getPageManager() {
-        if(INSTANCE == null) {
-            INSTANCE = new PageManager();
+        if(instance == null) {
+            instance = new PageManager();
         }
-        return INSTANCE;
+        return instance;
     }
 
     public MenuPage getMenuToPage() {

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class PropertiesManager {
     private final Properties properties = new Properties();
-    private static PropertiesManager INSTANCE = null;
+    private static PropertiesManager instance = null;
     
     private PropertiesManager() {
         loadApplicationProperites();
@@ -16,10 +16,10 @@ public class PropertiesManager {
     }
     
     public static PropertiesManager getThisProperties() {
-        if(INSTANCE == null) {
-            INSTANCE = new PropertiesManager();
+        if(instance == null) {
+            instance = new PropertiesManager();
         }
-        return INSTANCE;
+        return instance;
     }
 
     private void loadApplicationProperites() {

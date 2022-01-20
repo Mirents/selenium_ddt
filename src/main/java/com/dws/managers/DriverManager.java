@@ -15,7 +15,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class DriverManager {
     private static final Logger LOGGER = LogManager.getLogger(WebDriver.class);
     private static EventFiringWebDriver eventDriver;
-    private static DriverManager INSTANCE = null;
+    private static DriverManager instance = null;
     private static WebDriverListener eventListener;
     
     private DriverManager() {
@@ -38,7 +38,7 @@ public class DriverManager {
     public static EventFiringWebDriver getDriver() {
         if(eventDriver == null) {
             LOGGER.debug("Instantiating the Web Driver");
-            INSTANCE = new DriverManager();
+            instance = new DriverManager();
         }
         
         return eventDriver;
@@ -49,7 +49,7 @@ public class DriverManager {
             LOGGER.debug("Shutting down the web driver");
             eventDriver.quit();
             eventDriver = null;
-            INSTANCE = null;
+            instance = null;
         }
     }
     

@@ -7,14 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 public class CartHelper {
     protected static final Logger LOGGER = LogManager.getLogger(CartHelper.class);
-    private static CartHelper INSTANCE;
+    private static CartHelper instance;
     private final List<ProductHelper> cart;
     
     public static CartHelper getCartHelper() {
-        if(INSTANCE == null) {
-            INSTANCE = new CartHelper();
+        if(instance == null) {
+            instance = new CartHelper();
         }
-        return INSTANCE;
+        return instance;
     }
 
     private CartHelper() {
