@@ -47,8 +47,6 @@ Test run settings are located in the "application.properties" file located in:
 - "path.unix" - Root folder "src" for Unix
 - "path.driver.chrome.windows" - The folder of the web driver for Windows relative to the "src" folder
 - "path.driver.chrome.unix" - The folder of the web driver for Unix relative to the "src" folder
-- "data.engine.path.folder" - Tests table folder
-- "path.data.engine.file" - File name of the table with tests
 ### For reference
 Browser driver included: ChromeDriver 97.0.4692.71.
 

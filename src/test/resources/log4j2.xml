@@ -17,8 +17,8 @@
                      ignoreExceptions="false">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{10} - %msg%n"/>
             <Policies>
-                <TimeBasedTriggeringPolicy interval="10"/> <!-- Интервал создания нового файла с записями логов -->
-                <TimeBasedTriggeringPolicy size = "10 MB" /> <!-- Если размер файла превысит 100 мб, заведется новый файл -->
+                <TimeBasedTriggeringPolicy interval = "10"/> <!-- Интервал создания нового файла с записями логов -->
+                <SizeBasedTriggeringPolicy size = "10 MB" /> <!-- Если размер файла превысит 10 мб, заведется новый файл -->
             </Policies>
         </RollingFile>
 

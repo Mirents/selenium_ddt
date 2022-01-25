@@ -33,8 +33,4 @@ public class ProperitesConstant {
     public static final String PATH_DRIVER_CHROME_WINDOWS = "path.driver.chrome.windows";
             
     public static final String PATH_DRIVER_CHROME_UNIX = "path.driver.chrome.unix";
-    
-    public static final String DATA_ENGINE_PATH_FOLDER = "path.data.engine.file";
-    
-    public static final String DATA_ENGINE_COL_TEST_CASE_ID = "data.engine.col.test.case.id";
 }
