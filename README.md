@@ -1,6 +1,6 @@
 ## Tutorial Project for Automated Web Application Testing
 ### Description:
-The framework uses the Page Object Model.
+The framework uses the Page Object Model to test the site http://demowebshop.tricentis.com/.
 ### Framework structure
 ![Image alt](https://github.com/Mirents/ui_test_framework/raw/main/src/test/resources/SchemeFramework.jpg)
 ### Applied technology:
