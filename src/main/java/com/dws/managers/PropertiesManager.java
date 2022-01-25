@@ -15,7 +15,7 @@ public class PropertiesManager {
         loadCustomProperites();
     }
     
-    public static PropertiesManager getThisProperties() {
+    public static PropertiesManager getPropertiesManager() {
         if(instance == null) {
             instance = new PropertiesManager();
         }

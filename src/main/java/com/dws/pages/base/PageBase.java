@@ -2,7 +2,6 @@ package com.dws.pages.base;
 
 import com.dws.helper.CartHelper;
 import static com.dws.managers.DriverManager.getDriver;
-import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.managers.WaitManager.getWaitManager;
 import static com.dws.utils.ProperitesConstant.*;
 import java.io.IOException;
@@ -21,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static com.dws.managers.PropertiesManager.getPropertiesManager;
 
 public class PageBase {
     protected static final Logger LOGGER = LogManager.getLogger(PageBase.class);
@@ -102,8 +102,7 @@ public class PageBase {
             flag = true;
         } catch (NoSuchElementException ignore) {}
         finally {
-            getDriver().manage().timeouts().implicitlyWait(
-                    Integer.parseInt(getThisProperties()
+            getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(getPropertiesManager()
                             .getProperty(DRIVER_IMPLICITY_WAIT)), TimeUnit.SECONDS);
         }
         return flag;

@@ -1,7 +1,6 @@
 package com.dws.managers;
 
 import static com.dws.managers.DriverManager.getDriver;
-import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

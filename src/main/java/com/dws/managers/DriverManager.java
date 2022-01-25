@@ -1,6 +1,5 @@
 package com.dws.managers;
 
-import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.*;
 import com.dws.utils.WebDriverListener;
 import org.apache.commons.exec.OS;
@@ -11,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import static com.dws.managers.PropertiesManager.getPropertiesManager;
 
 public class DriverManager {
     private static final Logger LOGGER = LogManager.getLogger(WebDriver.class);
@@ -19,12 +19,12 @@ public class DriverManager {
     private static WebDriverListener eventListener;
     
     private DriverManager() {
-        if(getThisProperties()
+        if(getPropertiesManager()
                 .getProperty(HIGLILIGHTS_ELEMENTS_ENABLE).equals("yes")) {
-            String color = getThisProperties().getProperty(HIGLILIGHTS_ELEMENTS_COLOR);
-            int interval = Integer.parseInt(getThisProperties()
+            String color = getPropertiesManager().getProperty(HIGLILIGHTS_ELEMENTS_COLOR);
+            int interval = Integer.parseInt(getPropertiesManager()
                     .getProperty(HIGLILIGHTS_ELEMENTS_INTERVAL));
-            int count = Integer.parseInt(getThisProperties()
+            int count = Integer.parseInt(getPropertiesManager()
                     .getProperty(HIGLILIGHTS_ELEMENTS_COUNT));
             eventListener = new WebDriverListener(color, interval, count);
         } else {
@@ -68,8 +68,8 @@ public class DriverManager {
     }
     
     private void initDriverAnyOsFamily(String path, String chrome) {
-        String param = getThisProperties().getProperty(path) +
-                getThisProperties().getProperty(chrome);
+        String param = getPropertiesManager().getProperty(path) +
+                getPropertiesManager().getProperty(chrome);
         System.setProperty("webdriver.chrome.driver", param);
         createDriver(getChromeOptions());
         setGeneralStartOptions();
@@ -104,7 +104,7 @@ public class DriverManager {
     private ChromeOptions getChromeOptions() {
         ChromeOptions result = new ChromeOptions();
         LOGGER.debug("Setting browser options");
-        if(getThisProperties().getProperty(BROWSER_IS_HEADLESS).equals("yes")) {
+        if(getPropertiesManager().getProperty(BROWSER_IS_HEADLESS).equals("yes")) {
             LOGGER.debug("Enabling Browser Option: BROWSER_IS_HEADLESS");
             result.setHeadless(true);
         }
@@ -113,13 +113,13 @@ public class DriverManager {
     }
     
     private void setGeneralStartOptions() {
-        if(getThisProperties()
+        if(getPropertiesManager()
                 .getProperty(BROWSER_DELETE_ALL_COOKIES_BEFORE_START_TESTS)
                 .equals("yes")) {
             LOGGER.debug("Clearing cookies before starting");
             getDriver().manage().deleteAllCookies();
         }
-        if(getThisProperties().getProperty(BROWSER_MAXIMIZE_WINDOW).equals("yes")) {
+        if(getPropertiesManager().getProperty(BROWSER_MAXIMIZE_WINDOW).equals("yes")) {
             LOGGER.debug("Maximize the browser window to full screen");
             getDriver().manage().window().maximize();
         }

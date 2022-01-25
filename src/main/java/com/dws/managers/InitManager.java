@@ -3,13 +3,13 @@ package com.dws.managers;
 import static com.dws.managers.DriverManager.getDriver;
 import static com.dws.managers.DriverManager.quitDriver;
 import static com.dws.managers.PageManager.getPageManager;
-import static com.dws.managers.PropertiesManager.getThisProperties;
 import static com.dws.utils.ProperitesConstant.*;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriverException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static com.dws.managers.PropertiesManager.getPropertiesManager;
 
 public class InitManager {
     private static final Logger LOGGER = LogManager.getLogger(InitManager.class);
@@ -17,12 +17,12 @@ public class InitManager {
 
     public static void initFramework() {
         LOGGER.info("Start init framework");
-        int implicityWait = Integer.parseInt(getThisProperties()
+        int implicityWait = Integer.parseInt(getPropertiesManager()
                 .getProperty(DRIVER_IMPLICITY_WAIT));
         LOGGER.debug("Setting implicityWait timeout to {} sec.", implicityWait);
         getDriver().manage().timeouts().implicitlyWait(implicityWait, TimeUnit.SECONDS);
         
-        int pageLoadTimeout = Integer.parseInt(getThisProperties()
+        int pageLoadTimeout = Integer.parseInt(getPropertiesManager()
                 .getProperty(DRIVER_PAGE_LOAD_TIMEOUT));
         LOGGER.debug("Setting the pageLoadTimeout timeout to {} sec.", pageLoadTimeout);
         getDriver().manage().timeouts().pageLoadTimeout(pageLoadTimeout, TimeUnit.SECONDS);
@@ -36,7 +36,7 @@ public class InitManager {
     
     public static void openBrowser() {
         try {
-            String app_URL = getThisProperties().getProperty(APP_URL);
+            String app_URL = getPropertiesManager().getProperty(APP_URL);
             LOGGER.debug("Site opening: {}", app_URL);
             getDriver().get(app_URL);
         } catch(NullPointerException ex) {
