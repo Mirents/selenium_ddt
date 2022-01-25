@@ -9,7 +9,7 @@ The framework uses the Page Object Model to test the site http://demowebshop.tri
 - Frameworks: JUnit 5
 - Logger: Log4j2 with Slf4j
 - Drivers used: Selenium
-- Test website: demowebshop.tricentis.com
+- Test website: http://demowebshop.tricentis.com/
 ### Features:
 - Separating Test Implementation and Test Specification
 - Separating fixtures from tests
